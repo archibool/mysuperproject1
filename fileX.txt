@@ -1,1 +1,49 @@
-pupul
+class Item:
+    def __init__(self, name, quantity):
+        self.name = name
+        self.quantity = quantity
+
+    def display(self):
+        print(f"{self.name}: {self.quantity}")
+
+class Inventory:
+    def __init__(self):
+        self.items = []
+
+    def add_item(self, item):
+        self.items.append(item)
+
+    def remove_item(self, item_name):
+        for item in self.items:
+            if item.name == item_name:
+                self.items.remove(item)
+                print(f"Removed {item_name} from inventory.")
+                return
+        print(f"{item_name} not found in inventory.")
+
+    def display_inventory(self):
+        print("Current Inventory:")
+        for item in self.items:
+            item.display()
+
+# Create an inventory
+inventory = Inventory()
+
+# Add items to the inventory
+item1 = Item("Apple", 10)
+item2 = Item("Banana", 15)
+item3 = Item("Orange", 20)
+
+inventory.add_item(item1)
+inventory.add_item(item2)
+inventory.add_item(item3)
+
+# Display the current inventory
+inventory.display_inventory()
+
+# Remove an item from the inventory
+inventory.remove_item("Banana")
+
+# Display the updated inventory
+inventory.display_inventory()
+
